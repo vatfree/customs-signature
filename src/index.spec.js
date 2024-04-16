@@ -1,5 +1,5 @@
 import { expect } from "chai"
-import validateSignature from "./index.js"
+import verifySignature from "./index.js"
 import { X509Certificate } from "crypto"
 
 function makeScenarioTest({
@@ -17,7 +17,7 @@ function makeScenarioTest({
 	return async function () {
 		let verifyResult
 		before(async function () {
-			verifyResult = await validateSignature({
+			verifyResult = await verifySignature({
 				path,
 			})
 		})
