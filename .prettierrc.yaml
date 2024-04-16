@@ -1,0 +1,12 @@
+trailingComma: "es5"
+semi: false
+singleQuote: false
+quoteProps: "consistent"
+jsxSingleQuote: false
+bracketSpacing: true
+jsxBracketSameLine: false
+### editorconfig
+printWidth: 100
+tabWidth: 4
+useTabs: true
+endOfLine: "auto"

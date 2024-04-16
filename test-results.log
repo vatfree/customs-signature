@@ -1,0 +1,162 @@
+yarn run v1.22.22
+$ mocha --reporter spec --recursive "src/**/*.spec.js"
+
+
+  validate scenario
+    IN-CU005, result 0
+      ✔ read a text file
+      ✔ deserialize text into an object
+      ✔ convert from base64 text into a public key buffer
+      ✔ create a X509 certificate from public key
+      ✔ should get the RSA public key from the certificate
+      ✔ convert from base64 text the signature of proof
+      1) should compose a canonical message from a ValidationResult object
+      2) should convert a canonical message into utf8 byte array
+      ✔ should create a hash of the message using SHA512 and Pkcs1 padding
+      3) should verify the validity of the signature
+    IN-CU005, result 1
+      ✔ read a text file
+      ✔ deserialize text into an object
+      ✔ convert from base64 text into a public key buffer
+      ✔ create a X509 certificate from public key
+      ✔ should get the RSA public key from the certificate
+      ✔ convert from base64 text the signature of proof
+      4) should compose a canonical message from a ValidationResult object
+      5) should convert a canonical message into utf8 byte array
+      ✔ should create a hash of the message using SHA512 and Pkcs1 padding
+      6) should verify the validity of the signature
+    IN-CU006, result 0
+      ✔ read a text file
+      ✔ deserialize text into an object
+      ✔ convert from base64 text into a public key buffer
+      ✔ create a X509 certificate from public key
+      ✔ should get the RSA public key from the certificate
+      ✔ convert from base64 text the signature of proof
+      ✔ should compose a canonical message from a ValidationResult object
+      ✔ should convert a canonical message into utf8 byte array
+      ✔ should create a hash of the message using SHA512 and Pkcs1 padding
+      ✔ should verify the validity of the signature
+    IN-CU006, result 1
+      ✔ read a text file
+      ✔ deserialize text into an object
+      ✔ convert from base64 text into a public key buffer
+      ✔ create a X509 certificate from public key
+      ✔ should get the RSA public key from the certificate
+      ✔ convert from base64 text the signature of proof
+      ✔ should compose a canonical message from a ValidationResult object
+      ✔ should convert a canonical message into utf8 byte array
+      ✔ should create a hash of the message using SHA512 and Pkcs1 padding
+      ✔ should verify the validity of the signature
+    IN-CU006, result 2
+      ✔ read a text file
+      ✔ deserialize text into an object
+      ✔ convert from base64 text into a public key buffer
+      ✔ create a X509 certificate from public key
+      ✔ should get the RSA public key from the certificate
+      ✔ convert from base64 text the signature of proof
+      ✔ should compose a canonical message from a ValidationResult object
+      ✔ should convert a canonical message into utf8 byte array
+      ✔ should create a hash of the message using SHA512 and Pkcs1 padding
+      ✔ should verify the validity of the signature
+    IN-CU007, result 0
+      ✔ read a text file
+      ✔ deserialize text into an object
+      ✔ convert from base64 text into a public key buffer
+      ✔ create a X509 certificate from public key
+      ✔ should get the RSA public key from the certificate
+      ✔ convert from base64 text the signature of proof
+      ✔ should compose a canonical message from a ValidationResult object
+      ✔ should convert a canonical message into utf8 byte array
+      ✔ should create a hash of the message using SHA512 and Pkcs1 padding
+      ✔ should verify the validity of the signature
+    IN-CU008, result 0
+      ✔ read a text file
+      ✔ deserialize text into an object
+      ✔ convert from base64 text into a public key buffer
+      ✔ create a X509 certificate from public key
+      ✔ should get the RSA public key from the certificate
+      ✔ convert from base64 text the signature of proof
+      ✔ should compose a canonical message from a ValidationResult object
+      ✔ should convert a canonical message into utf8 byte array
+      ✔ should create a hash of the message using SHA512 and Pkcs1 padding
+      ✔ should verify the validity of the signature
+
+
+  64 passing (44ms)
+  6 failing
+
+  1) validate scenario
+       IN-CU005, result 0
+         should compose a canonical message from a ValidationResult object:
+
+      AssertionError: expected 'N000680W00008200003000009071ApprovedN…' to equal 'N000680W00008200003000009071ApprovedN…'
+      + expected - actual
+
+      -N000680W00008200003000009071ApprovedNone0300.052.07
+      +N000680W00008200003000009071ApprovedNone0300.0052.07
+      
+      at Context.<anonymous> (file:///Users/jacoswarts/Desktop/Projects/vatfree/signature/src/index.spec.js:77:60)
+
+  2) validate scenario
+       IN-CU005, result 0
+         should convert a canonical message into utf8 byte array:
+
+      AssertionError: expected 51 to equal 52
+      + expected - actual
+
+      -51
+      +52
+      
+      at Context.<anonymous> (file:///Users/jacoswarts/Desktop/Projects/vatfree/signature/src/index.spec.js:84:72)
+
+  3) validate scenario
+       IN-CU005, result 0
+         should verify the validity of the signature:
+
+      AssertionError: expected false to equal true
+      + expected - actual
+
+      -false
+      +true
+      
+      at Context.<anonymous> (file:///Users/jacoswarts/Desktop/Projects/vatfree/signature/src/index.spec.js:99:60)
+
+  4) validate scenario
+       IN-CU005, result 1
+         should compose a canonical message from a ValidationResult object:
+
+      AssertionError: expected 'N000680W00008300005000009071ApprovedN…' to equal 'N000680W00008300005000009071ApprovedN…'
+      + expected - actual
+
+      -N000680W00008300005000009071ApprovedNone0500.086.78
+      +N000680W00008300005000009071ApprovedNone0500.0086.78
+      
+      at Context.<anonymous> (file:///Users/jacoswarts/Desktop/Projects/vatfree/signature/src/index.spec.js:77:60)
+
+  5) validate scenario
+       IN-CU005, result 1
+         should convert a canonical message into utf8 byte array:
+
+      AssertionError: expected 51 to equal 52
+      + expected - actual
+
+      -51
+      +52
+      
+      at Context.<anonymous> (file:///Users/jacoswarts/Desktop/Projects/vatfree/signature/src/index.spec.js:84:72)
+
+  6) validate scenario
+       IN-CU005, result 1
+         should verify the validity of the signature:
+
+      AssertionError: expected false to equal true
+      + expected - actual
+
+      -false
+      +true
+      
+      at Context.<anonymous> (file:///Users/jacoswarts/Desktop/Projects/vatfree/signature/src/index.spec.js:99:60)
+
+
+
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.

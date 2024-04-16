@@ -1,0 +1,5 @@
+test-packages/
+**/*.md
+pnpm-lock.yaml
+.meteor
+.vscode
