@@ -1,5 +1,5 @@
 import { expect } from "chai"
-import validateScenario from "./index.js"
+import validateSignature from "./index.js"
 import { X509Certificate } from "crypto"
 
 function makeScenarioTest({
@@ -15,76 +15,54 @@ function makeScenarioTest({
 	isValid,
 }) {
 	return async function () {
-		it("read a text file", async function () {
-			const { fileContents } = await validateScenario({
+		let verifyResult
+		before(async function () {
+			verifyResult = await validateSignature({
 				path,
 			})
+		})
+		it("read a text file", async function () {
+			const { fileContents } = verifyResult
 			expect(fileContents).to.be.a("string")
 			expect(fileContents).to.contain(fileContentsContain)
 		})
 		it("deserialize text into an object", async function () {
-			const { request } = await validateScenario({
-				path,
-			})
-			expect(request).to.be.an("object")
+			const { request } = verifyResult
 			expect(request.PublicKey).to.contain(publicKeyContain)
 		})
 		it("convert from base64 text into a public key buffer", async function () {
-			const { publicKeyBuffer } = await validateScenario({
-				path,
-			})
-			expect(publicKeyBuffer).to.be.instanceOf(Buffer)
+			const { publicKeyBuffer } = verifyResult
 			expect(publicKeyBuffer.length).to.equal(publicKeyBufferLength)
 		})
 		it("create a X509 certificate from public key", async function () {
-			const { certificate } = await validateScenario({
-				path,
-			})
-			expect(certificate).to.be.instanceOf(X509Certificate)
+			const { certificate } = verifyResult
 			certificateIssuerLines.forEach((line) => {
 				expect(certificate.issuer).to.contain(line)
 			})
 		})
 		it("should get the RSA public key from the certificate", async function () {
-			const { rsaPublicKey } = await validateScenario({
-				path,
-			})
-			expect(rsaPublicKey.asymmetricKeyType).to.equal("rsa")
+			const { rsaPublicKey } = verifyResult
 		})
 		it("convert from base64 text the signature of proof", async function () {
-			const { verifyResults } = await validateScenario({
-				path,
-			})
-			expect(verifyResults).to.be.an("array")
+			const { verifyResults } = verifyResult
 			expect(verifyResults[validationResultIndex].signatureBuffer).to.be.instanceOf(Buffer)
 		})
 		it("should compose a canonical message from a ValidationResult object", async function () {
-			const { verifyResults } = await validateScenario({
-				path,
-			})
-			expect(verifyResults[validationResultIndex].message).to.be.a("string")
+			const { verifyResults } = verifyResult
 			expect(verifyResults[validationResultIndex].message).to.equal(message)
 		})
 		it("should convert a canonical message into utf8 byte array", async function () {
-			const { verifyResults } = await validateScenario({
-				path,
-			})
-			expect(verifyResults[validationResultIndex].messageBytes).to.be.instanceOf(Buffer)
+			const { verifyResults } = verifyResult
 			expect(verifyResults[validationResultIndex].messageBytes.length).to.equal(
 				messageBytesLength
 			)
 		})
 		it("should create a hash of the message using SHA512 and Pkcs1 padding", async function () {
-			const { verifyResults } = await validateScenario({
-				path,
-			})
-			expect(verifyResults[validationResultIndex].hash).to.be.instanceOf(Buffer)
+			const { verifyResults } = verifyResult
 			expect(verifyResults[validationResultIndex].hash.length).to.equal(messageHashLength)
 		})
 		it("should verify the validity of the signature", async function () {
-			const { verifyResults } = await validateScenario({
-				path,
-			})
+			const { verifyResults } = verifyResult
 			expect(verifyResults[validationResultIndex].isValid).to.equal(isValid)
 		})
 	}

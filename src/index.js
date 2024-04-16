@@ -18,7 +18,7 @@ function getMessage(validation) {
 	return `${validation.ValidationRequestId}${validation.Approved}${validation.ReasonNotApproved || ""}${validation.ReasonNotApprovedCode}${cultureInvariantFloat(validation.TotalValue)}${cultureInvariantFloat(validation.TotalVat)}`
 }
 
-export default async function validateScenario({ path }) {
+export default async function validateSignature({ path }) {
 	// read a text file
 	const fileContents = await readFile(path, { encoding: "utf8" })
 
@@ -73,22 +73,22 @@ async function main() {
 		)
 
 	logSummary(
-		await validateScenario({
+		await validateSignature({
 			path: "assets/IN-CU005/request.json",
 		})
 	) // `-- Signature of result isValid))
 	logSummary(
-		await validateScenario({
+		await validateSignature({
 			path: "assets/IN-CU006/request.json",
 		})
 	)
 	logSummary(
-		await validateScenario({
+		await validateSignature({
 			path: "assets/IN-CU007/request.json",
 		})
 	)
 	logSummary(
-		await validateScenario({
+		await validateSignature({
 			path: "assets/IN-CU008/request.json",
 		})
 	)
