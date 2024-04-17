@@ -66,26 +66,13 @@ function logSummary({ verifyResults }) {
 }
 
 async function main() {
-	logSummary(
-		await verifySignature({
-			path: "assets/IN-CU005/request.json",
+	const assets = ["IN-CU005", "IN-CU006", "IN-CU007", "IN-CU008"]
+	for (const asset of assets) {
+		const verifyResults = await verifySignature({
+			path: `assets/${asset}/request.json`,
 		})
-	)
-	logSummary(
-		await verifySignature({
-			path: "assets/IN-CU006/request.json",
-		})
-	)
-	logSummary(
-		await verifySignature({
-			path: "assets/IN-CU007/request.json",
-		})
-	)
-	logSummary(
-		await verifySignature({
-			path: "assets/IN-CU008/request.json",
-		})
-	)
+		logSummary(verifyResults)
+	}
 }
 
 main()
