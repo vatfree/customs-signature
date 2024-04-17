@@ -34,7 +34,7 @@ export default async function verifySignature({ path }) {
 		// should convert a canonical message into utf8 byte array
 		const messageBytes = Buffer.from(message, "utf8")
 		// should create a hash of the message using SHA512 and Pkcs1 padding
-		const hash = createHash("sha512").update(messageBytes).digest()
+		const hash = createHash("SHA512").update(messageBytes).digest()
 		// should verify the validity of the signature
 		const verify = createVerify("SHA512").update(messageBytes)
 		const isValid = verify.verify(rsaPublicKey, signatureBuffer)
